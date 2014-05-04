@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_send"
+        android:id="@+id/action_share"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:title="Send"
-        android:visible="true"/>
+        android:title="@string/menu_share_label"
+        android:visible="false"/>
 
 </menu>

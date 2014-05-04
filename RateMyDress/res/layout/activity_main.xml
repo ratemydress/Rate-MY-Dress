@@ -7,6 +7,7 @@
 
     <Button
         style="@style/options_button2"
+        android:background="@drawable/blue_button"
         android:id="@+id/camera"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -15,6 +16,7 @@
 
     <Button
         style="@style/options_button2"
+        android:background="@drawable/blue_button"
         android:id="@+id/upload"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -23,6 +25,7 @@
 
     <Button
         style="@style/options_button2"
+        android:background="@drawable/blue_button"
         android:id="@+id/button4"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -31,6 +34,7 @@
 
     <Button
         style="@style/options_button2"
+        android:background="@drawable/blue_button"
         android:id="@+id/button5"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -39,7 +43,8 @@
 
     <Button
         style="@style/options_button2"
-        android:id="@+id/button3"
+        android:background="@drawable/blue_button"
+        android:id="@+id/friends"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -48,10 +53,20 @@
     
     <Button
         style="@style/options_button2"
-        android:id="@+id/button6"
+        android:background="@drawable/blue_button"
+        android:id="@+id/profile"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="View Popular Posts" />
+        android:text="View My Profile" />
 
+    <Button
+        style="@style/options_button2"
+        android:background="@drawable/blue_button"
+        android:id="@+id/logout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Logout" />
+    
 </LinearLayout>

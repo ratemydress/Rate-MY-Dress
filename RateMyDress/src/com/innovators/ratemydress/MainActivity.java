@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import com.parse.ParseUser;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,6 +24,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	protected Button mCameraButton;
 	protected Button mUploadButton;
+	protected Button mProfileButton;
+	protected Button mFriendsButton;
+	protected Button mLogoutButton;
 	
 	public static final int TAKE_PHOTO_REQUEST = 0;
 	public static final int MEDIA_TYPE_IMAGE = 4;
@@ -42,6 +47,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		mUploadButton = (Button) findViewById(R.id.upload);
 		mUploadButton.setOnClickListener(this);
+		
+		mProfileButton = (Button) findViewById(R.id.profile);
+		mProfileButton.setOnClickListener(this);
+		
+		mFriendsButton = (Button) findViewById(R.id.friends);
+		mFriendsButton.setOnClickListener(this);
+		
+		mLogoutButton = (Button) findViewById(R.id.logout);
+		mLogoutButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -61,7 +75,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				}else{
 					mMediaUri = data.getData();
 				}
-			}else{
+			}else if(requestCode == TAKE_PHOTO_REQUEST){
 				//Broadcast to add the images to the gallery
 				Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 				mediaScanIntent.setData(mMediaUri);
@@ -70,6 +84,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			Intent chooseFriendsIntent = new Intent(this, ChooseFriendsActivity.class);
 			chooseFriendsIntent.setData(mMediaUri);
+			chooseFriendsIntent.putExtra(ParseConstants.KEY_FILE_TYPE, ParseConstants.TYPE_IMAGE);
 			startActivity(chooseFriendsIntent);
 			
 		}else if(resultCode == RESULT_CANCELED){ 	
@@ -99,9 +114,37 @@ public class MainActivity extends Activity implements OnClickListener {
 			Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
 			choosePhotoIntent.setType("image/*");
 			startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
+			break;
+			
+		case R.id.profile://View my profile
+			if(ParseUser.getCurrentUser()!=null){
+				Intent viewProfileIntent = new Intent(this, UserDetailsActivity.class);
+				startActivity(viewProfileIntent);
+			}
+			break;
+		
+		case R.id.logout://Logout from profile
+			// Log the user out
+			ParseUser.logOut();
+			// Go to the login view
+			startLoginActivity();
+			break;
+		
+		case R.id.friends://View my profile
+			Intent viewFriendsIntent = new Intent(this, ManageFriendsActivity.class);
+			startActivity(viewFriendsIntent);
+			break;	
+			
 		default:
 			break;
 		}
+	}
+
+	private void startLoginActivity() {
+		Intent intent = new Intent(this, LoginActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
 	}
 
 	private Uri getOutputMediaFileUri(int mediaType) {

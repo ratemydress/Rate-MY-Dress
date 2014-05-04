@@ -72,7 +72,7 @@ public class ChooseFriendsActivity extends ListActivity {
 					String[] usernames = new String[mFriends.size()];
 					int i = 0;
 					for(ParseUser user : mFriends){
-						usernames[i] = (String) user.get("fbName");
+						usernames[i] = user.getString("fbName");
 						i++;
 					}
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), 
@@ -126,8 +126,8 @@ public class ChooseFriendsActivity extends ListActivity {
 			return true;
 		
 		case R.id.action_share:
-			ParseObject message = createMessage();
-			if(message == null){
+			ParseObject post = createMessage();
+			if(post == null){
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage(R.string.error_selecting_file)
 						.setTitle(R.string.error_selecting_file_title)
@@ -135,7 +135,7 @@ public class ChooseFriendsActivity extends ListActivity {
 				AlertDialog dialog = builder.create();
 				dialog.show();
 			}else{
-				send(message);
+				share(post);
 				finish();
 			}
 			return true;
@@ -143,7 +143,7 @@ public class ChooseFriendsActivity extends ListActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	protected void send(ParseObject message) {
+	protected void share(ParseObject message) {
 		message.saveInBackground(new SaveCallback() {
 			@Override
 			public void done(ParseException e) {
@@ -167,6 +167,7 @@ public class ChooseFriendsActivity extends ListActivity {
 		ParseObject post = new ParseObject(ParseConstants.CLASS_POSTS);
 		post.put(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
 		post.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
+		post.put(ParseConstants.KEY_SENDER_FB_NAME, ParseUser.getCurrentUser().get("fbName"));
 		post.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
 		post.put(ParseConstants.KEY_FILE_TYPE, mFileType);
 		

@@ -10,7 +10,7 @@
     <string name="error_external_storage">There was a problem accessing your device\'s external storage</string>
     <string name="general_error">Sorry, there was an error!</string>
     <string name="title_activity_choose_friends">Select Friends</string>
-    <string name="empty_friends_list_message">Choose Friends</string>
+    <string name="empty_friends_list_message">First Manage Friends using option in Home Screen</string>
     <string name="error_title">We are sorry!!</string>
     <string name="fb_app_id">1402070513398912</string>
     <string name="title_activity_user_details">User Details</string>
@@ -24,6 +24,9 @@
     <string name="error_selecting_file_title">We\'re Sorry!!</string>
     <string name="success_message">Image Posted</string>
     <string name="error_sending_message">There was an error sending your message. Please try again</string>
-    
-    
+    <string name="title_activity_notification">Notifications</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="empty_notification_list">No new Notifications</string>
+    <string name="title_activity_view_notification">View Notification</string>
+
 </resources>

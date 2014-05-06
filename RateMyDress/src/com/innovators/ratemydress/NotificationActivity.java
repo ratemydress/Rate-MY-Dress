@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class NotificationActivity extends ListActivity {
@@ -99,6 +98,7 @@ public class NotificationActivity extends ListActivity {
 		if(fileType.equals(ParseConstants.TYPE_IMAGE)){
 			Intent intent = new Intent(this, ViewNotificationActivity.class);
 			intent.setData(fileUri);
+			intent.putExtra(ParseConstants.KEY_POST_ID, post.getObjectId());
 			startActivity(intent);
 		}
 		

@@ -21,18 +21,18 @@
     	style="@android:style/ButtonBar">
 
     	<Button 
-    	    android:id="@+id/rateButton" 
+    	    android:id="@+id/ratingButton" 
     	    android:layout_width="wrap_content"
         	android:layout_height="wrap_content" 
         	android:layout_weight="1"
-        	android:text="Rate It" />
+        	android:text="@string/rate" />
 
     	<Button 
     	    android:id="@+id/discardButton" 
     	    android:layout_width="wrap_content"
         	android:layout_height="wrap_content" 
         	android:layout_weight="1"
-        	android:text="Discard It" />
+        	android:text="@string/discard" />
     	
 	</LinearLayout>
 

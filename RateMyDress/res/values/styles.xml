@@ -60,4 +60,9 @@
     <item name="android:shadowRadius" >2</item>
   </style>
   
+
+  <style name="FullHeightDialog" parent="android:style/Theme.Dialog">
+	  <item name="android:windowNoTitle">true</item>
+  </style>
+
 </resources>

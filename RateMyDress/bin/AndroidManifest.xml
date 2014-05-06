@@ -81,7 +81,16 @@
         <activity
             android:name="com.innovators.ratemydress.ViewNotificationActivity"
             android:label="@string/title_activity_view_notification"
-            android:parentActivityName="com.innovators.ratemydress.NotificationActivity" android:screenOrientation="portrait">
+            android:parentActivityName="com.innovators.ratemydress.NotificationActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.innovators.ratemydress.NotificationActivity" />
+        </activity>
+        <activity
+            android:name="com.innovators.ratemydress.RatingActivity"
+            android:label="@string/title_activity_rating"
+            android:parentActivityName="com.innovators.ratemydress.NotificationActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.innovators.ratemydress.NotificationActivity" />

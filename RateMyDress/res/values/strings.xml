@@ -25,8 +25,15 @@
     <string name="success_message">Image Posted</string>
     <string name="error_sending_message">There was an error sending your message. Please try again</string>
     <string name="title_activity_notification">Notifications</string>
-    <string name="hello_world">Hello world!</string>
     <string name="empty_notification_list">No new Notifications</string>
     <string name="title_activity_view_notification">View Notification</string>
+    <string name="rate">Rate It!</string>
+    <string name="discard">Discard It!</string>
+    <string name="title_activity_rating">Rating and Comments</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="error_update_rating">Error in updating the Rating</string>
+    <string name="error_update_rating_title">Rating is not updated</string>
+    <string name="success_rating_update">Rating is Updated</string>
+    <string name="error_save_rating">Error Saving the Rating</string>
 
 </resources>

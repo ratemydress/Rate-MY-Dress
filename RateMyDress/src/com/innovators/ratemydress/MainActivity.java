@@ -139,7 +139,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			startLoginActivity();
 			break;
 		
-		case R.id.friends://View my profile
+		case R.id.friends://Manage Friendlist
 			Intent viewFriendsIntent = new Intent(this, ManageFriendsActivity.class);
 			startActivity(viewFriendsIntent);
 			break;	

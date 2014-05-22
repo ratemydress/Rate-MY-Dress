@@ -7,7 +7,8 @@ This project is build using maven.
 
 Key Points
 
-1) This project is for Android platform
+1) This project is for Android devices 
+
 2) It should support all major version of Android
 
 Supported Platforms

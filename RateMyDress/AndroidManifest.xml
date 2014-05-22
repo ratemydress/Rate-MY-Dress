@@ -95,6 +95,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.innovators.ratemydress.NotificationActivity" />
         </activity>
+        <activity
+            android:name="com.innovators.ratemydress.MyPostsActivity"
+            android:label="@string/title_activity_my_posts"
+            android:parentActivityName="com.innovators.ratemydress.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.innovators.ratemydress.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.innovators.ratemydress.ViewPostActivity"
+            android:label="@string/title_activity_view_post"
+            android:parentActivityName="com.innovators.ratemydress.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.innovators.ratemydress.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

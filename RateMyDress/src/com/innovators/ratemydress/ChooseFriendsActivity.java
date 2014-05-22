@@ -3,6 +3,11 @@ package com.innovators.ratemydress;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.facebook.FacebookException;
+import com.facebook.FacebookOperationCanceledException;
+import com.facebook.Session;
+import com.facebook.widget.WebDialog;
+import com.facebook.widget.WebDialog.OnCompleteListener;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -135,12 +140,55 @@ public class ChooseFriendsActivity extends ListActivity {
 				AlertDialog dialog = builder.create();
 				dialog.show();
 			}else{
+				sendNotification();
 				share(post);
 				finish();
 			}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void sendNotification() {
+	    Bundle params = new Bundle();
+	    params.putString("message", "Learn how to make your Android apps social");
+
+	    WebDialog requestsDialog = (
+	        new WebDialog.RequestsDialogBuilder(this,
+	            Session.getActiveSession(),
+	            params))
+	            .setOnCompleteListener(new OnCompleteListener() {
+
+	                @Override
+	                public void onComplete(Bundle values,
+	                    FacebookException error) {
+	                    if (error != null) {
+	                        if (error instanceof FacebookOperationCanceledException) {
+	                            Toast.makeText(ChooseFriendsActivity.this, 
+	                                "Request cancelled", 
+	                                Toast.LENGTH_SHORT).show();
+	                        } else {
+	                            Toast.makeText(ChooseFriendsActivity.this, 
+	                                "Network Error", 
+	                                Toast.LENGTH_SHORT).show();
+	                        }
+	                    } else {
+	                        final String requestId = values.getString("request");
+	                        if (requestId != null) {
+	                            Toast.makeText(ChooseFriendsActivity.this, 
+	                                "Request sent",  
+	                                Toast.LENGTH_SHORT).show();
+	                        } else {
+	                            Toast.makeText(ChooseFriendsActivity.this, 
+	                                "Request cancelled", 
+	                                Toast.LENGTH_SHORT).show();
+	                        }
+	                    }   
+	                }
+
+	            })
+	            .build();
+	    requestsDialog.show();
 	}
 
 	protected void share(ParseObject message) {

@@ -19,9 +19,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ListView;
 
-public class NotificationActivity extends ListActivity {
-	
-	public static final String TAG = NotificationActivity.class.getSimpleName();
+public class MyPostsActivity extends ListActivity {
+
+	public static final String TAG = MyPostsActivity.class.getSimpleName();
 	
 	protected List<ParseObject> mPosts;
 	
@@ -29,7 +29,8 @@ public class NotificationActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		setContentView(R.layout.activity_notification);
+			setContentView(R.layout.activity_my_posts);
+
 	}
 	
 	@Override
@@ -39,18 +40,17 @@ public class NotificationActivity extends ListActivity {
 		setProgressBarIndeterminateVisibility(true);
 		
 		ParseQuery<ParseObject> queryPosts = new ParseQuery<ParseObject>(ParseConstants.CLASS_POSTS);
-		queryPosts.whereEqualTo(ParseConstants.KEY_RECIPIENT_IDS, ParseUser.getCurrentUser().getObjectId());
+		queryPosts.whereEqualTo(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
 		queryPosts.addDescendingOrder(ParseConstants.KEY_CREATED_AT);
 		queryPosts.findInBackground(new FindCallback<ParseObject>() {
 			@Override
 			public void done(List<ParseObject> posts, ParseException e) {
 				setProgressBarIndeterminateVisibility(false);
 				if(e==null){
-					//There are notifications
+					//You have shared pics
 					mPosts = posts;
-					
-					//Prepare the notifications to be displayed in a list
-					NotificationAdapter adapter = new NotificationAdapter(NotificationActivity.this, mPosts);
+				
+					MyPostsAdapter adapter = new MyPostsAdapter(MyPostsActivity.this, mPosts);
 					setListAdapter(adapter);
 				}
 			}
@@ -58,11 +58,12 @@ public class NotificationActivity extends ListActivity {
 		
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.notification, menu);
+		getMenuInflater().inflate(R.menu.my_posts, menu);
 		return true;
 	}
 
@@ -77,7 +78,7 @@ public class NotificationActivity extends ListActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
@@ -88,20 +89,12 @@ public class NotificationActivity extends ListActivity {
 		Uri fileUri = Uri.parse(file.getUrl());
 		
 		if(fileType.equals(ParseConstants.TYPE_IMAGE)){
-			Intent intent = new Intent(this, ViewNotificationActivity.class);
+			Intent intent = new Intent(this, ViewPostActivity.class);
 			intent.setData(fileUri);
 			intent.putExtra(ParseConstants.KEY_POST_ID, post.getObjectId());
 			startActivity(intent);
 		}
 		
 	}
-
+	
 }
-
-
-
-
-
-
-
-

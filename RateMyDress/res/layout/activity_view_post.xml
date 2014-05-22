@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.innovators.ratemydress.ViewPostActivity" >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" 
+        android:scaleType="fitCenter"/>
+    
+    <LinearLayout 
+        android:id="@+id/footer" 
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" 
+    	android:orientation="horizontal"
+    	android:layout_alignParentBottom="true" 
+    	style="@android:style/ButtonBar">
+
+
+	</LinearLayout>
+
+</RelativeLayout>

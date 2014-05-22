@@ -35,5 +35,8 @@
     <string name="error_update_rating_title">Rating is not updated</string>
     <string name="success_rating_update">Rating is Updated</string>
     <string name="error_save_rating">Error Saving the Rating</string>
+    <string name="title_activity_time_line">TimeLineActivity</string>
+    <string name="title_activity_my_posts">MyPostsActivity</string>
+    <string name="title_activity_view_post">My Pic</string>
 
 </resources>

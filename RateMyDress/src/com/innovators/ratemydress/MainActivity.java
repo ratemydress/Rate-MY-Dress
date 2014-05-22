@@ -25,6 +25,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected Button mCameraButton;
 	protected Button mUploadButton;
 	protected Button mNotificationsButton;
+	protected Button mPosts;
 	protected Button mProfileButton;
 	protected Button mFriendsButton;
 	protected Button mLogoutButton;
@@ -52,6 +53,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		mNotificationsButton = (Button) findViewById(R.id.notifications);
 		mNotificationsButton.setOnClickListener(this);
 				
+		mPosts = (Button) findViewById(R.id.posts);
+		mPosts.setOnClickListener(this);
+		
 		mProfileButton = (Button) findViewById(R.id.profile);
 		mProfileButton.setOnClickListener(this);
 		
@@ -124,6 +128,11 @@ public class MainActivity extends Activity implements OnClickListener {
 			Intent viewNotificationsIntent = new Intent(this, NotificationActivity.class);
 			startActivity(viewNotificationsIntent);
 			break;		
+		
+		case R.id.posts://View My Posts
+			Intent viewPostsIntent = new Intent(this, MyPostsActivity.class);
+			startActivity(viewPostsIntent);
+			break;	
 			
 		case R.id.profile://View my profile
 			if(ParseUser.getCurrentUser()!=null){

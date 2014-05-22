@@ -67,9 +67,13 @@ public class ViewNotificationActivity extends Activity implements OnClickListene
 			
 		}else if(view.getId() == R.id.discardButton){
 			//Discard the entry from notification list
-			
+			deleteFromRecipientList();
 			finish();
 		}
+	}
+
+	private void deleteFromRecipientList() {
+	
 	}
 
 	private void navigateToRatingDialog() {
@@ -83,7 +87,7 @@ public class ViewNotificationActivity extends Activity implements OnClickListene
         final TextView comment = (TextView) ratingDialog.findViewById(R.id.comment);
         comment.setHint("Add Comments Here..");
 
-        Button updateButton = (Button) ratingDialog.findViewById(R.id.ratingButton);
+        Button updateButton = (Button) ratingDialog.findViewById(R.id.updateRatingButton);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +104,7 @@ public class ViewNotificationActivity extends Activity implements OnClickListene
         		}else{
         			//save the created Parse Rating Object
         			saveRating(rating);
-        			finish();
+//        			finish();
         		}
             	finish();
             }
@@ -122,7 +126,7 @@ public class ViewNotificationActivity extends Activity implements OnClickListene
 							//Success: Rating is saved
 							Toast.makeText(ViewNotificationActivity.this, R.string.success_rating_update, Toast.LENGTH_LONG);
 							//Remove the user from the list of recipients
-							
+							deleteFromRecipientList();
 						}else{
 							//Some Exception while saving the image
 							AlertDialog.Builder builder = new AlertDialog.Builder(ViewNotificationActivity.this);

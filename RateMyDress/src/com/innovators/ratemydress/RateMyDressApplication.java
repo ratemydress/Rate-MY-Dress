@@ -10,10 +10,6 @@ import android.app.Application;
 
 public class RateMyDressApplication extends Application{
 
-	
-//	private static final String FRIENDS_KEY = "friends";
-	
-	
 	public void onCreate() {
 		super.onCreate();
 		
